@@ -1,0 +1,189 @@
+/* style2.css - Estilo inspirado no tema noturno e vibrante */
+
+/* Importa a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Corpo e Fundo */
+body, html {
+    height: 100%;
+    /* Gradiente vibrante, escuro com tons de roxo/índigo */
+    background: linear-gradient(135deg, #1a001f, #2a0033, #4b0082);
+    color: white; /* Cor do texto padrão para o fundo escuro */
+}
+
+/* Animação suave no fundo */
+@keyframes fundo-animado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background-size: 400% 400%;
+    animation: fundo-animado 15s ease infinite;
+}
+
+/* ---------------------------------------------------- */
+/* Layout e Posicionamento */
+/* ---------------------------------------------------- */
+
+/* Fundo geral para controle do viewport */
+.background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Conteúdo central (A Mensagem e o Botão) */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%; 
+    max-width: 1200px; 
+    padding: 200px;
+    padding-bottom: 30px; /* REDUZIDO para 30px: dar menos espaço no final para o botão "sair" */
+    background: rgba(0, 0, 0, 0.3); 
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(128, 0, 255, 0.4); 
+    
+    /* ESSENCIAL: Permite que o elemento filho (.botao_voltar) seja posicionado de forma absoluta dentro dele */
+    position: relative; 
+}
+
+/* Imagem de Fundo */
+.imagem-atras2 {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    opacity: 0.15;
+    filter: drop-shadow(0 0 10px #b366ff);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1; 
+}
+
+/* ---------------------------------------------------- */
+/* Elementos de Texto e Estrutura */
+/* ---------------------------------------------------- */
+
+/* Título Principal */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #7f00ff;
+}
+
+/* Estilo para a Mensagem do Dia */
+.mensagem_destaque {
+    font-size: 1.5rem; 
+    font-weight: 500;
+    font-style: italic;
+    color: #ffd9e6; 
+    margin-bottom: 200px; /* Ajustado para espaçar do hr */
+    padding: 0 20px;
+    line-height: 1.6;
+    z-index: 1; 
+    position: relative; 
+}
+
+/* Linha Separadora */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #7f00ff, transparent);
+    width: 50%;
+    margin: 30px auto; /* Ajustado para espaçar do botão */
+}
+
+/* ---------------------------------------------------- */
+/* Botão de Navegação (Homepage) */
+/* ---------------------------------------------------- */
+
+/* Container do botão (.botao_voltar) */
+.botao_voltar {
+    /* MUDANÇAS CHAVE AQUI PARA FAZER O BOTÃO FLUTUAR */
+    position: absolute; /* Posição absoluta em relação ao .content */
+    left: 50%; /* Centraliza horizontalmente */
+    bottom: -30px; /* Move para baixo, fazendo-o "sair" do container */
+    transform: translateX(-50%); /* Ajusta o posicionamento para centralizar corretamente */
+    z-index: 10; /* Garante que o botão esteja acima de tudo */
+    
+    /* Remove a margem superior que estava empurrando */
+    margin-top: 0; 
+}
+
+/* Estilo para o botão de voltar/homepage (id #botao-mensagem) */
+#botao-mensagem {
+    background: linear-gradient(90deg, #7f00ff, #e100ff);
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700; 
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(128, 0, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#botao-mensagem:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(225, 0, 255, 0.8), 0 0 5px white; 
+}
+
+/* Ajuste para o link para remover sublinhado */
+a {
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------- */
+/* Luzes Flutuantes (Base Amarela e Roxa) */
+/* ---------------------------------------------------- */
+
+/* Animação de Pulsar */
+@keyframes pulsar {
+    0% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+    100% { opacity: 0.6; transform: scale(1); }
+}
+
+.luz-flutuante {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ffcc00; /* Amarelo como base */
+    box-shadow: 0 0 50px 20px #ffcc00, 0 0 100px 40px rgba(255, 204, 0, 0.5); /* Efeito neon amarelado */
+    z-index: 1; /* Fica abaixo do .content, mas acima do .background */
+    filter: blur(5px);
+    animation: pulsar 6s infinite ease-in-out;
+}
+
+/* Posicionamento e variações para cada luz flutuante */
+.luz-1 { top: 5%; left: 10%; width: 100px; height: 100px; animation-delay: 0s; }
+.luz-2 { top: 80%; left: 5%; width: 120px; height: 120px; animation-delay: 1s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-3 { top: 15%; right: 10%; width: 80px; height: 80px; animation-delay: 2s; }
+.luz-4 { bottom: 10%; right: 20%; animation-delay: 3s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-5 { top: 50%; left: 0%; animation-delay: 4s; }
+.luz-6 { top: 40%; right: 0%; animation-delay: 5s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-7 { bottom: 5%; left: 50%; width: 90px; height: 90px; animation-delay: 6s; }
+.luz-8 { top: 0%; left: 40%; width: 110px; height: 110px; animation-delay: 7s; }
+.luz-9 { bottom: 40%; right: 5%; width: 130px; height: 130px; animation-delay: 8s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-10 { top: 70%; left: 30%; width: 70px; height: 70px; animation-delay: 9s; }

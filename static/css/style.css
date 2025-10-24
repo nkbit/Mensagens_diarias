@@ -1,0 +1,168 @@
+/* style.css - Estilo para a Homepage com texto e luzes flutuantes */
+
+/* Importa a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Corpo e Fundo */
+body, html {
+    height: 100%;
+    /* Gradiente vibrante, escuro com tons de roxo/índigo */
+    background: linear-gradient(135deg, #1a001f, #2a0033, #4b0082);
+    color: white; 
+}
+
+/* Animação suave no fundo */
+@keyframes fundo-animado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background-size: 400% 400%;
+    animation: fundo-animado 15s ease infinite;
+}
+
+/* ---------------------------------------------------- */
+/* Layout e Posicionamento Principal */
+/* ---------------------------------------------------- */
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex; /* Usamos flexbox para centralizar */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Conteúdo central (A Imagem, Textos e o Botão) */
+.content {
+    text-align: center;
+    width: 90%; 
+    max-width: 1100px; /* Largura grande para o container */
+    padding: 100px 50px; /* Padding vertical para dar espaço */
+    background: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(128, 0, 255, 0.4); 
+    position: relative; 
+    z-index: 2; /* Garante que o conteúdo principal fique acima das luzes */
+    display: flex;
+    flex-direction: column; /* Organiza os filhos em coluna */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagem de Fundo Dentro do Container */
+.imagem-atras {
+    width: 100%;
+    max-width: 1100px; /* Aumentado para preencher melhor */
+    height: auto;
+    opacity: 0.25; /* Mais visível que a outra página */
+    filter: drop-shadow(0 0 10px #b366ff);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Fica atrás dos textos e botão */
+}
+
+/* ---------------------------------------------------- */
+/* Elementos de Texto */
+/* ---------------------------------------------------- */
+
+.texto-superior, .texto-inferior {
+    font-size: 3rem; /* Tamanho grande */
+    font-weight: 900; /* Extra bold */
+    color: rgb(88, 12, 187); 
+    text-shadow: 0 0 25px #580a58, 0 0 20px #7f00ff; /* Efeito neon */
+    z-index: 1; /* Acima da imagem */
+    position: relative;
+    letter-spacing: 5px; /* Espaçamento entre letras */
+    text-transform: uppercase;
+}
+
+.texto-superior {
+    margin-bottom: 60px; /* Espaço entre o texto superior e o botão */
+}
+
+.texto-inferior {
+    margin-top: 60px; /* Espaço entre o botão e o texto inferior */
+}
+
+
+/* ---------------------------------------------------- */
+/* Botão de Navegação */
+/* ---------------------------------------------------- */
+
+/* Ajuste para o link (<a>) para garantir interatividade e remover sublinhado */
+.content a {
+    position: relative;
+    z-index: 10; /* Coloca o link e o botão no topo da pilha para garantir que sejam clicáveis */
+    text-decoration: none;
+}
+
+#botao-mensagem {
+    background: linear-gradient(90deg, #7f00ff, #e100ff);
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700; 
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(128, 0, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* Removido o z-index daqui, pois agora está no <a> pai */
+}
+
+#botao-mensagem:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(225, 0, 255, 0.8), 0 0 5px white; 
+}
+
+/* ---------------------------------------------------- */
+/* Luzes Flutuantes (Base Amarela para Estilizar) */
+/* ---------------------------------------------------- */
+
+/* Animação de Pulsar */
+@keyframes pulsar {
+    0% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+    100% { opacity: 0.6; transform: scale(1); }
+}
+
+.luz-flutuante {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ffcc00; /* Amarelo como base, como você pediu */
+    box-shadow: 0 0 50px 20px #ffcc00, 0 0 100px 40px rgba(255, 204, 0, 0.5); /* Efeito neon amarelado */
+    z-index: 1; /* Fica abaixo do .content, mas acima do .background */
+    filter: blur(5px);
+    animation: pulsar 6s infinite ease-in-out;
+}
+
+/* Posicionamento e variações para cada luz flutuante */
+.luz-1 { top: 5%; left: 10%; width: 100px; height: 100px; animation-delay: 0s; }
+.luz-2 { top: 80%; left: 5%; width: 120px; height: 120px; animation-delay: 1s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-3 { top: 15%; right: 10%; width: 80px; height: 80px; animation-delay: 2s; }
+.luz-4 { bottom: 10%; right: 20%; animation-delay: 3s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-5 { top: 50%; left: 0%; animation-delay: 4s; }
+.luz-6 { top: 40%; right: 0%; animation-delay: 5s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-7 { bottom: 5%; left: 50%; width: 90px; height: 90px; animation-delay: 6s; }
+.luz-8 { top: 0%; left: 40%; width: 110px; height: 110px; animation-delay: 7s; }
+.luz-9 { bottom: 40%; right: 5%; width: 130px; height: 130px; animation-delay: 8s; background: #e100ff; box-shadow: 0 0 50px 20px #e100ff, 0 0 100px 40px rgba(225, 0, 255, 0.5); }
+.luz-10 { top: 70%; left: 30%; width: 70px; height: 70px; animation-delay: 9s; }

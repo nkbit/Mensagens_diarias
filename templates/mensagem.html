@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa 💖</title>
+    <link rel="stylesheet" href="static/css/style2.css"> <!-- você pode criar esse arquivo depois -->
+</head>
+<body>
+    <div class="background">
+        <!-- Adicionando 10 divs para representar as luzes flutuantes em posições aleatórias -->
+        <div class="luz-flutuante luz-1"></div>
+        <div class="luz-flutuante luz-2"></div>
+        <div class="luz-flutuante luz-3"></div>
+        <div class="luz-flutuante luz-4"></div>
+        <div class="luz-flutuante luz-5"></div>
+        <div class="luz-flutuante luz-6"></div>
+        <div class="luz-flutuante luz-7"></div>
+        <div class="luz-flutuante luz-8"></div>
+        <div class="luz-flutuante luz-9"></div>
+        <div class="luz-flutuante luz-10"></div>
+        <div class="content">
+            <img src="{{ url_for('static', filename='img/imagem_atras2.png') }}" alt="Imagem de fundo atrás do botão" class="imagem-atras2">
+            
+            <p class="mensagem_destaque">
+               "{{ mensagem_do_dia }}"
+            </p>
+            
+            
+            <hr>
+        <div class="botao_voltar">
+            <a href="{{ url_for('homepage')}}">
+                <button id="botao-mensagem">Homepage</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
